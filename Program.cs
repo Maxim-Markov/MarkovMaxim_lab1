@@ -15,11 +15,11 @@ namespace Лабораторная1
             TelBook.Removing(0);
             TelBook.SeeOne(0);
             TelBook.Editing(0);
-             TelBook.SeeOne(0);
+            TelBook.SeeOne(0);
             TelBook.SeeAll();
             Console.WriteLine();
         }
-        
+
     }
 
     public class TelBook
@@ -27,11 +27,13 @@ namespace Лабораторная1
         private static List<TelBook> book = new List<TelBook>();
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public char[] TelNum { get;
+        public char[] TelNum
+        {
+            get;
 
             private set;
-            
-             }
+
+        }
         public string Country { get; private set; }
         public TelBook()
         {
@@ -53,7 +55,7 @@ namespace Лабораторная1
             TelNum = temp;
             Country = "Россия";
         }
-        public TelBook(string firstName,string lastName)
+        public TelBook(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -65,7 +67,7 @@ namespace Лабораторная1
             TelNum = temp;
             Country = "Россия";
         }
-        public TelBook(string firstName, string lastName,string country)
+        public TelBook(string firstName, string lastName, string country)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -87,14 +89,14 @@ namespace Лабораторная1
         {
             FirstName = firstName;
             LastName = lastName;
-           
-                char[] temp = new char[11];
-                
-                for (int j = 1; j < 11; j++)
-                    temp[j] = telNum[j];
-                TelNum = temp;
-            
-            
+
+            char[] temp = new char[11];
+
+            for (int j = 1; j < 11; j++)
+                temp[j] = telNum[j];
+            TelNum = temp;
+
+
             Country = country;
         }
 
@@ -106,14 +108,14 @@ namespace Лабораторная1
             {
                 Console.WriteLine("Запрос не распознан. Попробуйте ещё:");
                 str = Console.ReadLine();
-                
+
             }
             switch (str)
             {
                 case "Имя":
                     {
                         Console.WriteLine("Введите имя");
-                        
+
                         string str1 = Console.ReadLine();
                         TelBook b = new TelBook(str1);
                         book.Add(b);
@@ -140,23 +142,23 @@ namespace Лабораторная1
                         bool isCorrect = false;
                         for (int i = 0; i < 11; i++)
                         {
-                            
-                            if (Int64.TryParse(str,out long number) == true)
+
+                            if (Int64.TryParse(str, out long number) == true)
                             {
                                 isCorrect = true;
                             }
                         }
-                        
-                        while ((str.Length != 11)||(isCorrect == false))
+
+                        while ((str.Length != 11) || (isCorrect == false))
                         {
                             Console.WriteLine("неверный формат номера, попробуйте ещё");
                             str = Console.ReadLine();
-                           
-                                if (Int64.TryParse(str, out long number) == true)
-                                {
-                                    isCorrect = true;
-                                }
-                            
+
+                            if (Int64.TryParse(str, out long number) == true)
+                            {
+                                isCorrect = true;
+                            }
+
                         }
 
                         for (int i = 0; i < 11; i++)
@@ -175,29 +177,29 @@ namespace Лабораторная1
                         Console.WriteLine("Введите фамилию");
                         string str2 = Console.ReadLine();
                         Console.WriteLine("Введите Номер телефона,вводите только цифры в формате 8XXXXXXXXXX");
-                       
+
                         char[] temp = new char[11];
                         str = Console.ReadLine();
                         bool isCorrect = false;
-                        
 
-                            if (Int64.TryParse(str, out long number) == true)
-                            {
-                                isCorrect = true;
-                            }
-                        
+
+                        if (Int64.TryParse(str, out long number) == true)
+                        {
+                            isCorrect = true;
+                        }
+
 
                         while ((str.Length != 11) || (isCorrect == false))
                         {
                             Console.WriteLine("неверный формат номера, попроуйте ещё");
                             str = Console.ReadLine();
-                            
 
-                                if (Int64.TryParse(str, out long num) == true)
-                                {
-                                    isCorrect = true;
-                                }
-                            
+
+                            if (Int64.TryParse(str, out long num) == true)
+                            {
+                                isCorrect = true;
+                            }
+
                         }
                         for (int i = 0; i < 11; i++)
                         {
@@ -218,7 +220,7 @@ namespace Лабораторная1
                         string str1 = Console.ReadLine();
                         Console.WriteLine("Введите фамилию");
                         string str2 = Console.ReadLine();
-                        
+
                         Console.WriteLine("Введите страну");
                         string str3 = Console.ReadLine();
 
@@ -237,9 +239,9 @@ namespace Лабораторная1
             }
             Console.WriteLine("Что вы желаете отредактировать? Возможные варианты:\nИмя,Фамилия,Номер телефона,Страна");
             string str = Console.ReadLine();
-            while((str!="Имя")&&(str != "Фамилия") && (str != "Номер телефона") && (str != "Страна"))
+            while ((str != "Имя") && (str != "Фамилия") && (str != "Номер телефона") && (str != "Страна"))
             {
-                
+
                 Console.WriteLine("Запрос не распознан. Попробуйте ещё:");
                 str = Console.ReadLine();
             }
@@ -277,22 +279,22 @@ namespace Лабораторная1
                         {
                             Console.WriteLine("неверный формат номера, попроуйте ещё");
                             str = Console.ReadLine();
-                            
 
-                                if (Int64.TryParse(str, out long number) == true)
-                                {
-                                    isCorrect = true;
-                                }
-                            
+
+                            if (Int64.TryParse(str, out long number) == true)
+                            {
+                                isCorrect = true;
+                            }
+
                         }
                         for (int i = 0; i < 11; i++)
-                                temp[i] = str[i];
-                          
-                            
-                            book[index].TelNum = temp;
+                            temp[i] = str[i];
 
-                        
-                        
+
+                        book[index].TelNum = temp;
+
+
+
                         break;
                     }
                 case "Страна":
@@ -307,7 +309,7 @@ namespace Лабораторная1
 
         public static void Removing(int index)
         {
-            if((index < 0)||(index >= book.Count))
+            if ((index < 0) || (index >= book.Count))
             {
                 Console.WriteLine("Такого индекса нет!");
                 return;
@@ -343,8 +345,8 @@ namespace Лабораторная1
                 }
                 Console.WriteLine();
             }
-            
-           
+
+
         }
     }
 }
